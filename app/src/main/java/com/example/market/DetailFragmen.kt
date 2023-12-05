@@ -4,13 +4,14 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ProductDetail(
+data class DetailFragmen(
     val imageUrl: String,
     val title: String,
     val price: Int,
-    val content: String,
+
     val seller: String,
     val sellerEmail: String,
+    val content: String,
     val sell: Boolean
 ) : Parcelable {
 
@@ -18,4 +19,3 @@ data class ProductDetail(
 
     constructor() : this("", "", 0, "", "", "",true)
 }
-
