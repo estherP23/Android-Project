@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#FCE7E5"
-    tools:context=".PostFragment">
+    tools:context=".FragmentPost">
 
 
     <LinearLayout
