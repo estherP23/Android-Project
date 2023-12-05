@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.market.Home.Product
+import com.example.market.Home.Products
 import com.example.market.Home.ProductAdapter
 import com.example.market.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class ProfileFragment : Fragment() {
+class FragmentProfile : Fragment() {
     // 뷰 및 Firebase 관련 객체 초기화
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ProductAdapter
@@ -23,7 +23,7 @@ class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        val view = inflater.inflate(R.layout.profile, container, false)
         // 리사이클러뷰 설정
         recyclerView = view.findViewById(R.id.profileFragment)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -51,10 +51,10 @@ class ProfileFragment : Fragment() {
             .whereEqualTo("sellerEmail",userEmail)
             .get()
             .addOnSuccessListener { querySnapshot ->
-                val productList = mutableListOf<Product>()
+                val productList = mutableListOf<Products>()
                 for (document in querySnapshot.documents) {
                     //Product 객체로 변환
-                    val product = document.toObject(Product::class.java)
+                    val product = document.toObject(Products::class.java)
                     if (product != null) {
                         // Product 객체의 id 필드에 Firestore 문서의 ID 설정
                         product.id = document.id
