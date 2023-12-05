@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.market.ProductDetail
+import com.example.market.DetailFragmen
 import com.example.market.R
-import com.example.market.Chat.SendFragment
+import com.example.market.Chat.FragmentSend
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SellDetailFragment : Fragment() {
@@ -19,7 +19,7 @@ class SellDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_sell_detail, container, false)
+        val view = inflater.inflate(R.layout.message, container, false)
 
         //ProductViewHolder 에서 홈프래그먼트에서 셀디테일프레그먼트로 이동할때 id를
         //넘겨주는 코드가 있다. 그걸 받아오는 거임
@@ -40,7 +40,7 @@ class SellDetailFragment : Fragment() {
                     if (!querySnapshot.isEmpty) {
                         for (document in querySnapshot.documents) {
                             // 각 문서의 데이터를 가져와서 사용
-                            val productDetail = document.toObject(ProductDetail::class.java)
+                            val productDetail = document.toObject(DetailFragmen::class.java)
                             if (productDetail != null) {
                                 Log.d("SellDetailFragment", "ProductDetail: $productDetail")
                                 titleTextView.text = productDetail.title
@@ -63,7 +63,7 @@ class SellDetailFragment : Fragment() {
                                     }
 
                                     // 프래그먼트 인스턴스 생성 및 bundle 전달
-                                    val sendFragment = SendFragment()
+                                    val sendFragment = FragmentSend()
                                     sendFragment.arguments = bundle
 
                                     // 프래그먼트 추가 및 transaction 커밋
