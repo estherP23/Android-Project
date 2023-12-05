@@ -9,13 +9,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.annotation.Keep
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.UUID
 
-class PostFragment : Fragment() {
+class FragmentPost : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
@@ -23,7 +22,7 @@ class PostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_post, container, false)
+        val view = inflater.inflate(R.layout.post_fragment, container, false)
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
@@ -84,7 +83,7 @@ class PostFragment : Fragment() {
                         .addOnSuccessListener {
                             // 데이터 추가 성공시 로그 출력 및 액티비티 이동
                             Log.d("PostFragment", "글 등록 성공")
-                            val intent = Intent(context, BottomNavigationActivity::class.java)
+                            val intent = Intent(context, ActivityNavigation::class.java)
                             startActivity(intent)
                         }
                         .addOnFailureListener {
