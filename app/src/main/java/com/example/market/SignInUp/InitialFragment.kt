@@ -15,7 +15,7 @@ class InitialFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_initial, container, false)
+        val view = inflater.inflate(R.layout.first_fragment, container, false)
 
         // NavController를 가져옵니다. StartActivity 에서 nav_host_fragment를 지정해뒀고
         // nav_graph에서 initialFragment를 설정해뒀기에 findNavController를 이용해서
