@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.market.BottomNavigationActivity
+import com.example.market.ActivityNavigation
 import com.example.market.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,7 +27,7 @@ class SignUpFragment : Fragment() {
     ): View? {
         //매개변수로 받아온 inflater 객체의 inflate 메소드를 사용해 fragment_signUp 레이아웃 파일을
         //실제 View 객체로 전환해줌.
-        val view = inflater.inflate(R.layout.fragment_signup, container, false)
+        val view = inflater.inflate(R.layout.signup_fragment, container, false)
 
         //가입을 위한 auth 와 저장할 데이터베이스 firestore 객체를 가져온다.
         auth = FirebaseAuth.getInstance()
@@ -74,7 +74,7 @@ class SignUpFragment : Fragment() {
                             //db에 데이터 추가 작업이 성공했을 경우
                             .addOnSuccessListener {
                                 // 자동로그인, 바텀내비게이션 액티비티로 이동
-                                startActivity(Intent(context, BottomNavigationActivity::class.java))
+                                startActivity(Intent(context, ActivityNavigation::class.java))
                                 activity?.finish()
                             }
                             //실패시 오류메시지를 토스트로 표시, 영어로 되어있던 것들을 한글로 변경
