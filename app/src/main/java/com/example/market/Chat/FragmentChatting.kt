@@ -28,7 +28,7 @@ class FragmentChatting : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // 프래그먼트의 레이아웃을 확장(inflate)합니다.
-        val view = inflater.inflate(R.layout.chat_frgment, container, false)
+        val view = inflater.inflate(R.layout.chat_fragment, container, false)
 
         // Firebase 인스턴스 초기화
         auth = FirebaseAuth.getInstance()
